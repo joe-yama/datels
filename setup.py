@@ -6,7 +6,7 @@ LONG_DESCRIPTION = """
 SHORT_DESCRIPTION ="""
 `datels` is a simple CLI that displays a list of dates line by line.""".strip()
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 URL = 'https://github.com/joe-yama/datels'
 
 DEPENDENCIES = []
