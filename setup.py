@@ -1,12 +1,11 @@
 from setuptools import setup
 
-LONG_DESCRIPTION = """
+SHORT_DESCRIPTION = """
 `datels` is a simple CLI that displays a list of dates line by line.""".strip()
+with open('README.md') as readme:
+    LONG_DESCRIPTION =readme.read().strip()
 
-SHORT_DESCRIPTION ="""
-`datels` is a simple CLI that displays a list of dates line by line.""".strip()
-
-VERSION = '0.1.0'
+VERSION = '0.1.3'
 URL = 'https://github.com/joe-yama/datels'
 
 DEPENDENCIES = []
@@ -25,7 +24,9 @@ setup(
     version=VERSION,
     description=SHORT_DESCRIPTION,
     author='joe-yama',
-    
+    author_email='s1r0mqme@gmail.com',
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     packages=['datels'],
     install_requires=DEPENDENCIES,
     entry_points={
@@ -36,12 +37,7 @@ setup(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
         'License :: OSI Approved :: MIT License',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
