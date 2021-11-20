@@ -6,13 +6,19 @@ LONG_DESCRIPTION = """
 SHORT_DESCRIPTION ="""
 `datels` is a simple CLI that displays a list of dates line by line.""".strip()
 
-VERSION = '0.0.2'
+VERSION = '0.1.0'
 URL = 'https://github.com/joe-yama/datels'
 
 DEPENDENCIES = []
-TEST_DEPENDENCIES = []
-with open('requirements.txt') as requirements_txt:
-    DEPENDENCIES = requirements_txt.read().splitlines()
+TEST_DEPENDENCIES = [
+    'fire==0.4.0',
+    'numpy==1.21.4',
+    'pandas==1.3.4',
+    'python-dateutil==2.8.2',
+    'pytz==2021.3',
+    'six==1.16.0',
+    'termcolor==1.1.0',
+]
 
 setup(
     name='datels',
