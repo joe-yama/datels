@@ -34,7 +34,7 @@ The strftime to parse time, eg “%Y/%m/%d”. See strftime documentation for mo
 By default, datels returns dates daily-based list. You can specify by using `--freq` option:
 
 ```bash
-datels --start 1994-03-07 --end 1994-03-08 --format %Y/%m/%dT%H --freq H
+$ datels --start 1994-03-07 --end 1994-03-08 --format %Y/%m/%dT%H --freq H
 1994/03/07T00
 1994/03/07T01
 1994/03/07T02
