@@ -14,49 +14,27 @@ To install datels from source, first clone the repository and then run:
 ## Basic Usage
 
 ```bash
-$ datels --start 1994-03-07 --end 1994-03-10
-19940307
-19940308
-19940309
+$ datels 1994-03-07 1994-03-10
+1994/03/07
+1994/03/08
+1994/03/09
+1994/03/10
 ```
 
 if you want to specify formatting,
 
 ```bash
-$ datels --start 1994-03-07 --end 1994-03-10 --format %Y/%m/%d
-1994/03/07
-1994/03/08
-1994/03/09
+$ datels 1994-03-07 1994-03-10 --sep="-"
+1994-03-07
+1994-03-08
+1994-03-09
+1994-03-10
+
+$ datels 1994-03-07 1994-03-10 --format "%c"
+Mon Mar  7 00:00:00 1994
+Tue Mar  8 00:00:00 1994
+Wed Mar  9 00:00:00 1994
+Thu Mar 10 00:00:00 1994
 ```
 
 The strftime to parse time, eg “%Y/%m/%d”. See strftime documentation for more information: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior.
-
-By default, datels returns dates daily-based list. You can specify by using `--freq` option:
-
-```bash
-$ datels --start 1994-03-07 --end 1994-03-08 --format %Y/%m/%dT%H --freq H
-1994/03/07T00
-1994/03/07T01
-1994/03/07T02
-1994/03/07T03
-1994/03/07T04
-1994/03/07T05
-1994/03/07T06
-1994/03/07T07
-1994/03/07T08
-1994/03/07T09
-1994/03/07T10
-1994/03/07T11
-1994/03/07T12
-1994/03/07T13
-1994/03/07T14
-1994/03/07T15
-1994/03/07T16
-1994/03/07T17
-1994/03/07T18
-1994/03/07T19
-1994/03/07T20
-1994/03/07T21
-1994/03/07T22
-1994/03/07T23
-```
