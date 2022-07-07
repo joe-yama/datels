@@ -8,9 +8,6 @@
 
 To install datels with pip, run: `pip install datels`
 
-To install datels from source, first clone the repository and then run:
-`python setup.py install`
-
 ## Basic Usage
 
 ```bash
