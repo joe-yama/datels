@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "datels"
-version = "0.2.4"
+version = "0.3.0"
 description = "`datels` is a simple CLI that displays a list of dates line by line."
 authors = ["joe-yama <s1r0mqme@gmail.com>"]
 license = "MIT"
@@ -16,6 +16,7 @@ fire = "^0.4.0"
 pandas = "^1"
 
 [tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
