@@ -5,7 +5,7 @@ from datels import datels
 
 TEST_ROOT_DIR: str = Path(__file__).parent
 
-testcases = [
+basic_testcases = [
     (
         "2021-01-01",
         "2021-01-02",
@@ -16,23 +16,90 @@ testcases = [
         "2022-01-02",
         str(TEST_ROOT_DIR / "data" / "expected_20211230_20220102.txt"),
     ),
+    (
+        "2000-12-30",
+        "2022-01-02",
+        str(TEST_ROOT_DIR / "data" / "expected_20001230_20220102.txt"),
+    ),
 ]
 
 
-@pytest.mark.parametrize("start, end, expected_filename", testcases)
-def __test_datels_with_pandas(start, end, expected_filename) -> None:
-    with open(expected_filename) as f:
-        expected = f.readlines()
-    actual = datels.list_dates_with_pandas(start, end)
-    assert len(expected) == len(actual)
-    for exp, act in zip(expected, actual):
-        assert exp == act
-
-
-def __test_datels_with_numpy(start, end, expected_filename) -> None:
+@pytest.mark.parametrize("start, end, expected_filename", basic_testcases)
+def test_basic_testcases(start, end, expected_filename) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
     actual = datels.list_dates_with_numpy(start, end)
     assert len(expected) == len(actual)
     for exp, act in zip(expected, actual):
-        assert exp == act
+        assert exp.strip() == act
+
+
+boundary_testcases = [
+    (
+        "2021-01-01",
+        "2021-01-01",
+        "both",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210101.txt"),
+    ),
+    (
+        "2021-01-01",
+        "2021-01-01",
+        "left",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210101_left.txt"),
+    ),
+    (
+        "2021-01-01",
+        "2021-01-01",
+        "right",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210101_right.txt"),
+    ),
+    (
+        "2021-01-01",
+        "2021-01-05",
+        "both",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210105.txt"),
+    ),
+    (
+        "2021-01-01",
+        "2021-01-05",
+        "left",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210105_left.txt"),
+    ),
+    (
+        "2021-01-01",
+        "2021-01-05",
+        "right",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210105_right.txt"),
+    ),
+]
+
+
+@pytest.mark.parametrize("start, end, inclusive, expected_filename", boundary_testcases)
+def test_boundary_testcases(start, end, inclusive, expected_filename) -> None:
+    with open(expected_filename) as f:
+        expected = f.readlines()
+    actual = datels.list_dates_with_numpy(start, end, inclusive)
+    assert len(expected) == len(actual)
+    for exp, act in zip(expected, actual):
+        assert exp.strip() == act
+
+
+sep_testcases = [
+    (
+        "2021-01-01",
+        "2021-01-02",
+        "-",
+        str(TEST_ROOT_DIR / "data" / "expected_20210101_20210102_sep.txt"),
+    ),
+]
+
+
+@pytest.mark.parametrize("start, end, sep, expected_filename", sep_testcases)
+def test_sep_testcases(start, end, sep, expected_filename) -> None:
+    print(start, end, sep)
+    with open(expected_filename) as f:
+        expected = f.readlines()
+    actual = datels.list_dates_with_numpy(start, end, sep, inclusive="both")
+    assert len(expected) == len(actual)
+    for exp, act in zip(expected, actual):
+        assert exp.strip() == act

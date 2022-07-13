@@ -1,17 +1,5 @@
-import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-
-
-def list_dates_with_pandas(start, end, freq="D", format=None, sep=None):
-    if format is None:
-        if sep is None:
-            sep = "/"
-        format = sep.join(("%Y", "%m", "%d"))
-
-    return [
-        date.strftime(format) for date in pd.date_range(start=start, end=end, freq=freq)
-    ]
 
 
 def list_dates_with_numpy(
@@ -20,10 +8,13 @@ def list_dates_with_numpy(
     if freq != "D":
         raise NotImplementedError("datels only support date-based frequency.")
 
+    if start > end:
+        raise ValueError("start date > end date")
+
     start = datetime.strptime(start, "%Y-%m-%d")
     end = datetime.strptime(end, "%Y-%m-%d")
 
-    if inclusive == "both":
+    if inclusive == "both" or start == end:
         end = end + timedelta(days=1)
     elif inclusive == "left":
         pass
