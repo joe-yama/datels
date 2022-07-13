@@ -18,7 +18,7 @@ $ datels 1994-03-07 1994-03-10
 1994/03/10
 ```
 
-if you want to specify formatting,
+### Date format option
 
 ```bash
 $ datels 1994-03-07 1994-03-10 --sep="-"
@@ -34,4 +34,24 @@ Wed Mar  9 00:00:00 1994
 Thu Mar 10 00:00:00 1994
 ```
 
-The strftime to parse time, eg “%Y/%m/%d”. See strftime documentation for more information: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior.
+See [strftime documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior) for more information.
+
+### Inclusive option
+
+```bash
+$ datels 1994-03-07 1994-03-10 --inclusive both
+1994/03/07
+1994/03/08
+1994/03/09
+1994/03/10
+
+$ datels 1994-03-07 1994-03-10 --inclusive left
+1994/03/07
+1994/03/08
+1994/03/09
+
+$ datels 1994-03-07 1994-03-10 --inclusive right
+1994/03/08
+1994/03/09
+1994/03/10
+```
