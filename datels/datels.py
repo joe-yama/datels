@@ -2,9 +2,7 @@ import numpy as np
 from datetime import datetime, timedelta
 
 
-def list_dates_with_numpy(
-    start, end, inclusive="both", freq="D", format=None, sep=None
-):
+def list_dates(start, end, inclusive="both", freq="D", format=None, sep=None):
     if freq != "D":
         raise NotImplementedError("datels only support date-based frequency.")
 

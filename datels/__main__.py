@@ -1,10 +1,10 @@
 import fire
 
-from datels.datels import list_dates_with_numpy
+from datels.datels import list_dates
 
 
 def main():
-    fire.Fire(list_dates_with_numpy)
+    fire.Fire(list_dates)
 
 
 main()

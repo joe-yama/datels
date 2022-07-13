@@ -28,7 +28,7 @@ basic_testcases = [
 def test_basic_testcases(start, end, expected_filename) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
-    actual = datels.list_dates_with_numpy(start, end)
+    actual = datels.list_dates(start, end)
     assert len(expected) == len(actual)
     for exp, act in zip(expected, actual):
         assert exp.strip() == act
@@ -78,7 +78,7 @@ boundary_testcases = [
 def test_boundary_testcases(start, end, inclusive, expected_filename) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
-    actual = datels.list_dates_with_numpy(start, end, inclusive)
+    actual = datels.list_dates(start, end, inclusive)
     assert len(expected) == len(actual)
     for exp, act in zip(expected, actual):
         assert exp.strip() == act
@@ -98,7 +98,7 @@ sep_testcases = [
 def test_sep_testcases(start, end, sep, expected_filename) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
-    actual = datels.list_dates_with_numpy(start, end, sep=sep)
+    actual = datels.list_dates(start, end, sep=sep)
     assert len(expected) == len(actual)
     for exp, act in zip(expected, actual):
         assert exp.strip() == act
