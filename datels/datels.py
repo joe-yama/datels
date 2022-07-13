@@ -1,5 +1,6 @@
-import numpy as np
 from datetime import datetime, timedelta
+
+import numpy as np
 
 
 def list_dates(start, end, inclusive="both", freq="D", format=None, sep=None):

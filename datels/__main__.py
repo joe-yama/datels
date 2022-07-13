@@ -1,5 +1,4 @@
 import fire
-
 from datels.datels import list_dates
 
 

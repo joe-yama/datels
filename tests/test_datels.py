@@ -1,6 +1,6 @@
 from pathlib import Path
-import pytest
 
+import pytest
 from datels import datels
 
 TEST_ROOT_DIR: str = Path(__file__).parent
