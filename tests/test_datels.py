@@ -96,10 +96,9 @@ sep_testcases = [
 
 @pytest.mark.parametrize("start, end, sep, expected_filename", sep_testcases)
 def test_sep_testcases(start, end, sep, expected_filename) -> None:
-    print(start, end, sep)
     with open(expected_filename) as f:
         expected = f.readlines()
-    actual = datels.list_dates_with_numpy(start, end, sep, inclusive="both")
+    actual = datels.list_dates_with_numpy(start, end, sep=sep)
     assert len(expected) == len(actual)
     for exp, act in zip(expected, actual):
         assert exp.strip() == act
