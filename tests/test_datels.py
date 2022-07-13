@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 from datels import datels
 
-TEST_ROOT_DIR: str = Path(__file__).parent
+TEST_ROOT_DIR: Path = Path(__file__).parent
 
 basic_testcases = [
     (
@@ -25,7 +25,7 @@ basic_testcases = [
 
 
 @pytest.mark.parametrize("start, end, expected_filename", basic_testcases)
-def test_basic_testcases(start, end, expected_filename) -> None:
+def test_basic_testcases(start: str, end: str, expected_filename: str) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
     actual = datels.list_dates(start, end)
@@ -75,7 +75,9 @@ boundary_testcases = [
 
 
 @pytest.mark.parametrize("start, end, inclusive, expected_filename", boundary_testcases)
-def test_boundary_testcases(start, end, inclusive, expected_filename) -> None:
+def test_boundary_testcases(
+    start: str, end: str, inclusive: str, expected_filename: str
+) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
     actual = datels.list_dates(start, end, inclusive)
@@ -95,7 +97,7 @@ sep_testcases = [
 
 
 @pytest.mark.parametrize("start, end, sep, expected_filename", sep_testcases)
-def test_sep_testcases(start, end, sep, expected_filename) -> None:
+def test_sep_testcases(start: str, end: str, sep: str, expected_filename: str) -> None:
     with open(expected_filename) as f:
         expected = f.readlines()
     actual = datels.list_dates(start, end, sep=sep)
