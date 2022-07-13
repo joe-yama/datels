@@ -1,9 +1,12 @@
+from datetime import date
 from pathlib import Path
 
 import pytest
 from datels import datels
+from datels import cli
 
 TEST_ROOT_DIR: Path = Path(__file__).parent
+
 
 basic_testcases = [
     (
@@ -104,3 +107,13 @@ def test_sep_testcases(start: str, end: str, sep: str, expected_filename: str) -
     assert len(expected) == len(actual)
     for exp, act in zip(expected, actual):
         assert exp.strip() == act
+
+
+def test_raise_exception_when_startdate_greater_than_enddate() -> None:
+    with pytest.raises(ValueError):
+        datels.list_dates(start="2022-01-05", end="2022-01-01")
+
+
+def test_raise_exception_when_specify_frequency_as_hour() -> None:
+    with pytest.raises(NotImplementedError):
+        datels.list_dates(start="2022-01-01", end="2022-01-05", freq="H")

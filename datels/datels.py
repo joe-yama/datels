@@ -16,7 +16,7 @@ def list_dates(
         raise NotImplementedError("datels only support date-based frequency.")
 
     if start > end:
-        raise ValueError("start date > end date")
+        raise ValueError("startdate > enddate")
 
     startdate = datetime.strptime(start, "%Y-%m-%d")
     enddate = datetime.strptime(end, "%Y-%m-%d")

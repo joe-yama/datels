@@ -2,8 +2,5 @@ import fire
 from datels.datels import list_dates
 
 
-def main():
+def run():
     fire.Fire(list_dates)
-
-
-main()
