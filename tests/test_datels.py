@@ -1,8 +1,7 @@
 from pathlib import Path
 
 import pytest
-from datels import datels
-from datels import list_dates
+from datels import datels, list_dates
 
 TEST_ROOT_DIR: Path = Path(__file__).parent
 
