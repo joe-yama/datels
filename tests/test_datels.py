@@ -1,9 +1,8 @@
-from datetime import date
 from pathlib import Path
 
 import pytest
 from datels import datels
-from datels import cli
+from datels import list_dates
 
 TEST_ROOT_DIR: Path = Path(__file__).parent
 
@@ -117,3 +116,13 @@ def test_raise_exception_when_startdate_greater_than_enddate() -> None:
 def test_raise_exception_when_specify_frequency_as_hour() -> None:
     with pytest.raises(NotImplementedError):
         datels.list_dates(start="2022-01-01", end="2022-01-05", freq="H")
+
+
+@pytest.mark.parametrize("start, end, expected_filename", basic_testcases)
+def test_list_date(start: str, end: str, expected_filename: str) -> None:
+    with open(expected_filename) as f:
+        expected = f.readlines()
+    actual = list_dates(start, end)
+    assert len(expected) == len(actual)
+    for exp, act in zip(expected, actual):
+        assert exp.strip() == act

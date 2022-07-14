@@ -55,3 +55,18 @@ $ datels 1994-03-07 1994-03-10 --inclusive right
 1994/03/09
 1994/03/10
 ```
+
+## Using in your python code not CLI
+
+```bash
+$ python
+>>> from datels import list_dates
+>>> dates = list_dates("1994-03-07", "1994-03-10", sep="-", inclusive="both")
+>>> dates
+['1994-03-07', '1994-03-08', '1994-03-09', '1994-03-10']
+>>> # list_dates retuens list of string
+>>> type(dates)
+<class 'list'>
+>>> type(dates[0])
+<class 'str'>
+```
