@@ -64,7 +64,7 @@ $ datels 1994-03-07 1994-03-10 --inclusive "right"
 
 ## Examples
 
-## Download daily partitioned objects from AmazonS3
+### Download daily partitioned objects from AmazonS3
 
 ```bash
 #!bin/bash
@@ -75,7 +75,7 @@ do
 done
 ```
 
-## Generate list of dates in Python scripts
+### Generate list of dates in Python scripts
 
 ```bash
 $ python
