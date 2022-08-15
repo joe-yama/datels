@@ -68,6 +68,8 @@ $ datels 1994-03-07 1994-03-10 --inclusive "right"
 
 ```bash
 #!bin/bash
+START_DATE='1994-03-07'
+END_DATE='1994-03-10'
 for DATE in $(datels ${START_DATE} ${END_DATE} --sep "/")
 do
   echo "Downloading data of ${DATE}"
@@ -77,15 +79,19 @@ done
 
 ### Generate list of dates in Python scripts
 
-```bash
-$ python
->>> from datels import list_dates
->>> dates = list_dates("1994-03-07", "1994-03-10", sep="-", inclusive="both")
->>> dates
-['1994-03-07', '1994-03-08', '1994-03-09', '1994-03-10']
->>> # list_dates retuens list of string
->>> type(dates)
-<class 'list'>
->>> type(dates[0])
-<class 'str'>
+```python
+from datels import list_dates
+
+dates = list_dates("1994-03-07", "1994-03-10", sep="-", inclusive="both")
+print("dates:", dates)
+print("type(dates):", type(dates))
+print("type(dates[0]):", type(dates[0]))
+```
+
+output:
+
+```sh
+dates: ['1994-03-07', '1994-03-08', '1994-03-09', '1994-03-10']
+type(dates): <class 'list'>
+type(dates[0]): <class 'str'>
 ```
